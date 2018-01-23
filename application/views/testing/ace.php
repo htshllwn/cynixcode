@@ -1,17 +1,20 @@
+
+<div class="container">
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    
+    <div class="col-md-12">
     <div id="editor">function foo(items) {
         var x = "All this is syntax highlighted";
         return x;
     }</div>
-    <br><BR><br><BR><br><BR><br><BR><br><BR>
     </div>
-    <div class="col-md-2"></div>
+    
 </div>
+</div>
+
 
 <script>
     var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
-    editor.session.setMode("ace/mode/javascript");
+    editor.setTheme("ace/theme/iplastic");
+    editor.session.setMode("ace/mode/c_cpp");
 </script>

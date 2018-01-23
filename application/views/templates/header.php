@@ -43,6 +43,7 @@
                 right: 0;
                 bottom: 0;
                 left: 0;
+                height: 500px;
             }
         </style>
         <script src="<?php echo base_url(); ?>assets/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
