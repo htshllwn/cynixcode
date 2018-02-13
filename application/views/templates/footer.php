@@ -43,8 +43,6 @@
         
     <!-- Template Javascript Files
 	================================================== -->
-	<!-- jquery -->
-	<script src="<?php echo base_url(); ?>assets/plugins/jQurey/jquery.min.js"></script>
 	<!-- Form Validation -->
     <script src="<?php echo base_url(); ?>assets/plugins/form-validation/jquery.form.js"></script> 
     <script src="<?php echo base_url(); ?>assets/plugins/form-validation/jquery.validate.min.js"></script>

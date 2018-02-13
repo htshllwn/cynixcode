@@ -15,6 +15,8 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- jQuery -->
+        <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/jQurey/jquery.min.js"></script>
         
         <!-- Template CSS Files
         ================================================== -->
