@@ -25,9 +25,13 @@
         editor.setTheme("ace/theme/iplastic");
         editor.session.setMode("ace/mode/c_cpp");
         editor.setValue("new value");
-        editor.setOptions({
-            fontSize: "18px"
-        });
+        
+        editor.setOptions( {
+            fontSize: "18px",
+		    enableBasicAutocompletion: true,
+            enableSnippets           : true,
+		    enableLiveAutocompletion : false
+	    } );
 
          
 
@@ -43,6 +47,17 @@
             var column = editor.session.getLine(row).length;
             console.log(column); // or simply Infinity
             editor.gotoLine(row + 1, column);
+
+            // Prevent editing first and last line of editor
+            editor.commands.on("exec", function(e) { 
+            var rowCol = editor.selection.getCursor();
+            if ((rowCol.row == 0) || ((rowCol.row + 1) == editor.session.getLength())) {
+                e.preventDefault();
+                e.stopPropagation();
+                }
+            });
+
+            //editor.setReadOnly(true);
             /*
             var n = editor.getSession().getValue().split("\n").length;
             editor.gotoLine(n);
