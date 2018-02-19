@@ -35,6 +35,8 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/facncybox/jquery.fancybox.css">
         <!-- template main css file -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom.css">
 
 
         <!-- Ace Editor Script -->
@@ -53,6 +55,8 @@
     </head>
 
     <body>
+
+    <div id="loader"></div>
 
 
         <!--

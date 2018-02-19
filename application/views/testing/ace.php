@@ -74,11 +74,13 @@
         });
 
         $("#send").click(function(){
+            $("#loader").fadeIn("fast");
             var content = editor.getValue();
             //console.log(content);
             $.post("<?php echo base_url().'test/proc_data' ?>",{content: content}, function(data, status){
                 //console.log("Data: " + data + "\nStatus: " + status);
                 $("#output").html(data);
+                $("#loader").fadeOut("fast");
             });
             
         });
@@ -88,6 +90,13 @@
     
 
     
+</script>
+
+<script>
+    $(window).load(function() {
+		// Animate loader off screen
+		$("#loader").fadeOut("slow");
+	});
 </script>
 
 <script>
