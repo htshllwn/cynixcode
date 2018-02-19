@@ -2,16 +2,23 @@
 <div class="container">
         <button class="btn btn-default" id="load">Load</button>
         <button class="btn btn-default" id="send">Send</button>
-<div class="row">
     
-    <div class="col-md-12">
-    <div id="editor">function foo(items) {
-        var x = "All this is syntax highlighted";
-        return x;
-    }</div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 id="output">Output Comes Here</h3>
+        </div>
     </div>
-    
-</div>
+
+    <div class="row">
+        
+        <div class="col-md-12">
+        <div id="editor">function foo(items) {
+            var x = "All this is syntax highlighted";
+            return x;
+        }</div>
+        </div>
+        
+    </div>
 </div>
 
 
@@ -43,9 +50,9 @@
             editor.focus(); // To focus the ace editor
 
             var row = editor.session.getLength() - 1;
-            console.log(row);
+            //console.log(row);
             var column = editor.session.getLine(row).length;
-            console.log(column); // or simply Infinity
+            //console.log(column); // or simply Infinity
             editor.gotoLine(row + 1, column);
 
             // Prevent editing first and last line of editor
@@ -68,9 +75,10 @@
 
         $("#send").click(function(){
             var content = editor.getValue();
-            console.log(content);
+            //console.log(content);
             $.post("<?php echo base_url().'test/proc_data' ?>",{content: content}, function(data, status){
-                console.log("Data: " + data + "\nStatus: " + status);
+                //console.log("Data: " + data + "\nStatus: " + status);
+                $("#output").html(data);
             });
             
         });
