@@ -82,9 +82,6 @@
             });
             
         });
-        //editor.setValue(tempData);
-
-        console.log(tempData);
     });
     
 
