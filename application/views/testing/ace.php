@@ -2,6 +2,11 @@
 <div class="container">
         <button class="btn btn-default" id="load">Load</button>
         <button class="btn btn-default" id="send">Send</button>
+    <div class="row">
+        <input type="checkbox" id="inputCB">Custom Input
+        <textarea id="input" class="form-control"></textarea>
+    </div>
+        
     
     <div class="row">
         <div class="col-md-12">
@@ -77,10 +82,19 @@
             $("#loader").fadeIn("fast");
             var output;
             var content = editor.getValue();
+            var inputData = $("#input").val();
+            var inputCB = $('#inputCB').is(':checked');
+            //console.log(inputCB);
             //console.log(content);
             $("#output").html("");
 
-            $.post("<?php echo base_url().'test/proc_data' ?>",{content: content}, function(data, status){
+            $.post("<?php echo base_url().'test/proc_data' ?>",
+            {
+                content: content, 
+                inputData: inputData, 
+                inputCB: inputCB
+            },
+            function(data, status){
                 //console.log("Data: " + data + "\nStatus: " + status);
                 console.log(data.split("\n"));
                 output = data.split("\n");
