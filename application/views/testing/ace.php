@@ -5,7 +5,7 @@
     
     <div class="row">
         <div class="col-md-12">
-            <h3 id="output">Output Comes Here</h3>
+            <p id="output">Output Comes Here</p>
         </div>
     </div>
 
@@ -75,11 +75,18 @@
 
         $("#send").click(function(){
             $("#loader").fadeIn("fast");
+            var output;
             var content = editor.getValue();
             //console.log(content);
+            $("#output").html("");
+
             $.post("<?php echo base_url().'test/proc_data' ?>",{content: content}, function(data, status){
                 //console.log("Data: " + data + "\nStatus: " + status);
-                $("#output").html(data);
+                console.log(data.split("\n"));
+                output = data.split("\n");
+                for(var i = 0; i < output.length-1; i++){
+                    $("#output").append(output[i]+"<br>");
+                }
                 $("#loader").fadeOut("fast");
             });
             

@@ -28,7 +28,10 @@
                     exec("chmod 700 assets/file/sample2");
                     exec("assets/file/sample2",$o);
                     exec("rm -f assets/file/sample2");
-                    echo $o[0];
+                    foreach ($o as $output) {
+                        header('Content-Type: text/plain');
+                        echo $output."\n";
+                    }
                 }
                 else {
                     echo $err;
