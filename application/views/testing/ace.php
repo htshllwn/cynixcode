@@ -88,17 +88,17 @@
             //console.log(content);
             $("#output").html("");
 
-            $.post("<?php echo base_url().'test/proc_data' ?>",
+            $.post("<?php echo base_url().'test/proc_data2' ?>",
             {
                 content: content, 
                 inputData: inputData, 
                 inputCB: inputCB
             },
             function(data, status){
-                //console.log("Data: " + data + "\nStatus: " + status);
+                console.log("Data: " + data + "\nStatus: " + status);
                 console.log(data.split("\n"));
                 output = data.split("\n");
-                for(var i = 0; i < output.length-1; i++){
+                for(var i = 0; i < output.length; i++){
                     $("#output").append(output[i]+"<br>");
                 }
                 $("#loader").fadeOut("fast");
