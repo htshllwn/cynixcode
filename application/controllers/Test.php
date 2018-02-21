@@ -15,32 +15,34 @@
             $inputData = $this->input->post('inputData');
             $inputCB = $this->input->post('inputCB');
             //print_r($inputCB);
-            //write_file('./assets/file/sample2.c', $data);
-            
-            if ( ! write_file('./assets/file/sample2.c', $data)){
+            //write_file('././sample2.c', $data);
+            chdir('assets/file/');
+            //exec('pwd');
+            if ( ! write_file('./sample2.c', $data)){
                 echo 'Unable to write the file';
             }
             else{
 
                 //echo 'File written!';
-                exec("gcc assets/file/sample2.c -o assets/file/sample2 2> assets/file/sample2.err");
-                $err = read_file("assets/file/sample2.err");
+                exec("gcc ./sample2.c -o ./sample2 2> ./sample2.err");
+                $err = read_file("./sample2.err");
                 if($err == ""){
-                    exec("chmod 700 assets/file/sample2");
+                    exec("chmod 777 ./sample2");
 
                     if($inputCB == "true"){
-                        write_file('./assets/file/sample2.in', $inputData);
-                        exec("assets/file/sample2 < assets/file/sample2.in",$o);
+                        write_file('./sample2.in', $inputData);
+                        $o = shell_exec("./sample2 < ./sample2.in");
                     }
                     else{
-                        exec("assets/file/sample2",$o);
+                        $o = shell_exec("timeout --kill-after=1s 1s ./sample2");
+                        //echo "Executed";
                     } 
                     
-                    exec("rm -f assets/file/sample2");
-                    foreach ($o as $output) {
+                    //exec("rm -f ./sample2");
+                    //foreach ($o as $output) {
                         header('Content-Type: text/plain');
-                        echo $output."\n";
-                    }
+                        echo $o."\n";
+                    //}
                 }
                 else {
                     echo $err;
