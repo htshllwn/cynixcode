@@ -44,7 +44,7 @@
                         //echo "Starting Execution";
                         exec("ulimit -f 2");
                         //echo shell_exec("ulimit");
-                        $process = proc_open('exec timeout 1s assets/file/sample2 > assets/file/sample2.out', $descriptors, $pipes);
+                        $process = proc_open('exec timeout 1s assets/file/sample2', $descriptors, $pipes);
                         //echo "Executed";
                     }
                     
