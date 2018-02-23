@@ -6,7 +6,7 @@
 
             $this->load->view('templates/header');
             $this->load->view('testing/ace');
-            //$this->load->view('templates/footer');
+            $this->load->view('templates/footer');
         }
 
         public function proc_data2(){

@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="editor-container">
         
         <div class="col-md-12">
         <div id="editor">function foo(items) {
