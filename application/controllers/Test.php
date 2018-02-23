@@ -42,7 +42,9 @@
                     else{
                         //$o = shell_exec("assets/file/sample2");
                         //echo "Starting Execution";
-                        $process = proc_open('exec timeout 1s assets/file/sample2', $descriptors, $pipes);
+                        exec("ulimit -f 2");
+                        //echo shell_exec("ulimit");
+                        $process = proc_open('exec timeout 1s assets/file/sample2 > assets/file/sample2.out', $descriptors, $pipes);
                         //echo "Executed";
                     }
                     
@@ -110,6 +112,8 @@
                     proc_close($process);
 
                     echo $buffer;
+                    //$output = read_file("assets/file/sample2.out");
+                    //echo $output;
                     
                 }
                 else {
