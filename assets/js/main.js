@@ -42,44 +42,69 @@
     /*   Contact Form Validating
     /* ========================================================================= */
 
-    $('#contact-form').validate({
+    $('#login-form').validate({
         rules: {
-            name: {
-                required: true, minlength: 4
+            enroll: {
+                required: true, rangelength:[12,12]
             }
-            , email: {
-                required: true, email: true
+            , pass: {
+                required: true
             }
-            , subject: {
-                required: false,
-            }
-            , message: {
-                required: true,
-            }
-            ,
+            , 
         }
         , messages: {
-            user_name: {
-                required: "Come on, you have a name don't you?", minlength: "Your name must consist of at least 2 characters"
+            enroll: {
+                required: "Enrollment No. is required", rangelength: "Please Enter correct Enrollment Number"
             }
-            , email: {
-                required: "Please put your email address",
+            , pass: {
+                required: "Please enter your Password",
             }
-            , message: {
-                required: "Put some messages here?", minlength: "Your name must consist of at least 2 characters"
-            }
-            ,
+            , 
         }
         , submitHandler: function(form) {
+            var enroll = document.getElementById("enroll").value;
+            var pass = document.getElementById("pass").value;
+            //var base_url =  window.location.href;
+            //console.log(pass);
+            
+                $("#loader").fadeIn("fast");
+                
+    
+                $.post( window.location.href,
+                {
+                    enroll: enroll, 
+                    pass: pass
+                },
+                function(data, status){
+                    console.log(data);
+                    console.log("Data: " + data.roll_no + "\nStatus: " + status);
+                    //console.log(data.split("\n"));
+                    //output = data.split("\n");
+                    
+                    //for(var i = 0; i < output.length; i++){
+                    //    $("#output").append(output[i]+"<br>");
+                    //}
+                    $("#loader").fadeOut("fast");
+                });
+                
+            
+
+
+            /*
             $(form).ajaxSubmit( {
-                type:"POST", data: $(form).serialize(), url:"sendmail.php", success: function() {
-                    $('#contact-form #success').fadeIn();
+                type:"POST", data: {
+                    enroll: enroll,
+                    pass: pass
+                }, url: window.location.href, success: function() {
+                    //console.log(enroll);
+                    $('#login-form #success').fadeIn();
                 }
                 , error: function() {
-                    $('#contact-form #error').fadeIn();
+                    $('#login-form #error').fadeIn();
                 }
             }
             );
+            */
         }
     });
 

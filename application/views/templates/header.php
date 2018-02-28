@@ -114,7 +114,11 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <?php if(!$this->session->userdata('logged_in')):?>
+                                <li><a href="<?php echo base_url().'users/login'; ?>">Login</a></li>
+                            <?php else: ?>
+                                <li><a href="<?php echo base_url().'users/logout'; ?>">Logout</a></li>
+                            <?php endif;?>
                         </ul>
                     </div>
                 </nav>
